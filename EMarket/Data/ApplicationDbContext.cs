@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using EMarket.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -12,5 +13,8 @@ namespace EMarket.Data
             : base(options)
         {
         }
+
+        public DbSet<Advertesiments> Advertesiments { get; set; }
+        public DbSet<Categories> Categories { get; set; }
     }
 }
