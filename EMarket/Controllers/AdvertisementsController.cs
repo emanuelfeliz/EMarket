@@ -83,6 +83,12 @@ namespace EMarket.Controllers
             return View(advertesiments);
         }
 
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public IActionResult Edit([Bind(Include = "Image", "ArticleName","")]Advertesiments adv)
+        //{
+
+        //}
 
     }
 }
