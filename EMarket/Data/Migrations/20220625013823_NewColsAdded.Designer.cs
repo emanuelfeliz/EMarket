@@ -4,14 +4,16 @@ using EMarket.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EMarket.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220625013823_NewColsAdded")]
+    partial class NewColsAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -30,7 +32,7 @@ namespace EMarket.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("CategoryId")
+                    b.Property<int?>("CategorieId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("Date")
@@ -39,9 +41,6 @@ namespace EMarket.Data.Migrations
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Images")
                         .IsRequired()
@@ -52,9 +51,7 @@ namespace EMarket.Data.Migrations
 
                     b.HasKey("AdvertesimentsID");
 
-                    b.HasIndex("CategoryId");
-
-                    b.HasIndex("Id");
+                    b.HasIndex("CategorieId");
 
                     b.ToTable("Advertisements");
                 });
@@ -132,7 +129,7 @@ namespace EMarket.Data.Migrations
 
             modelBuilder.Entity("EMarket.Models.Categories", b =>
                 {
-                    b.Property<int>("CategoryId")
+                    b.Property<int>("CategorieId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -145,7 +142,7 @@ namespace EMarket.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("CategoryId");
+                    b.HasKey("CategorieId");
 
                     b.ToTable("Categories");
                 });
@@ -285,13 +282,7 @@ namespace EMarket.Data.Migrations
                 {
                     b.HasOne("EMarket.Models.Categories", "Categories")
                         .WithMany()
-                        .HasForeignKey("CategoryId");
-
-                    b.HasOne("EMarket.Models.ApplicationUser", "ApplicationUser")
-                        .WithMany()
-                        .HasForeignKey("Id");
-
-                    b.Navigation("ApplicationUser");
+                        .HasForeignKey("CategorieId");
 
                     b.Navigation("Categories");
                 });

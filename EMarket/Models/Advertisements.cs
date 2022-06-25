@@ -1,4 +1,4 @@
-﻿//using EMarket.Areas.Identity.Pages.Account;
+﻿using EMarket.Areas.Identity.Pages.Account;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -13,11 +13,11 @@ namespace EMarket.Models
         [Key]
         public int AdvertesimentsID { get; set; }
 
-        [ForeignKey("CategorieId")]
+        [ForeignKey("CategoryId")]
         public virtual Categories Categories { get; set; }
 
-        //[ForeignKey("Id")]
-        //public virtual LoginModel Login { get; set; }
+        [ForeignKey("Id")]
+        public virtual ApplicationUser ApplicationUser { get; set; }
 
         [Required]
         public string ArticleName { get; set; }
