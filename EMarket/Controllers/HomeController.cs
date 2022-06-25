@@ -1,4 +1,5 @@
-﻿using EMarket.Models;
+﻿using EMarket.Data;
+using EMarket.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -11,16 +12,17 @@ namespace EMarket.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ApplicationDbContext context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ApplicationDbContext context)
         {
-            _logger = logger;
+            this.context = context;
         }
-
         public IActionResult Index()
         {
-            return View();
+            var result = this.context.Advertisements.ToList();
+
+            return View(result);
         }
 
         public IActionResult Privacy()

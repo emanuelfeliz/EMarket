@@ -1,0 +1,35 @@
+﻿@model IEnumerable<EMarket.Models.Categories>
+@{
+}
+
+
+<div class="text-center">
+    <h1 class="display-4">Categories:</h1>
+    <a class="btn btn-sm btn-primary m-1" asp-controller="Categories" asp-action="Create">Create a category</a>
+</div>
+<div class="container mt-5">
+    <div class="row">
+
+        @foreach (var d in Model)
+        {
+            <div class="col gy-3 my-3">
+                <div class="col-md-3">
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">@d.CategoryName</h5>
+                            <p class="card-text"> <b> Description:</b> @d.Description</p>
+                  
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = d.CategoryId })
+
+                                @Html.ActionLink("Delete", "Delete", new { id = d.CategoryId })
+                            </td>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
